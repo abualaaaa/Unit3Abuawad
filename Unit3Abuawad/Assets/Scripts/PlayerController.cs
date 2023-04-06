@@ -59,29 +59,26 @@ public class PlayerController : MonoBehaviour
                     playerAnim.SetFloat("Speed_Multiplier", 1.0f);
                 }
 
-
-
-
-
-                void OnCollisionEnter(Collision collision)
-                {
-                    if (collision.gameObject.CompareTag("Ground"))
-                    {
-                        isOnGround = true;
-                        dirtParticle.Play();
-                    }
-                    else if (collision.gameObject.CompareTag("Obstacle"))
-                    {
-                        gameOver = true;
-                        Debug.Log("Game Over!");
-                        playerAnim.SetBool("Death_b", true);
-                        playerAnim.SetInteger("DeathType_int", 1);
-                        explosionParticle.Play();
-                        dirtParticle.Stop();
-                        playerAudio.PlayOneShot(crashSound, 1.0f);
-                    }
-                }
+                              
             }
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+            dirtParticle.Play();
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            gameOver = true;
+            Debug.Log("Game Over!");
+            playerAnim.SetBool("Death_b", true);
+            playerAnim.SetInteger("DeathType_int", 1);
+            explosionParticle.Play();
+            dirtParticle.Stop();
+            playerAudio.PlayOneShot(crashSound, 1.0f);
         }
     }
 }
